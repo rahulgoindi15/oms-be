@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "382ee926-fb37-4381-978a-6b3f31803f23",
+		"name": "Oms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23810607"
+	},
+	"item": [
+		{
+			"name": "health check",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/health-check",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"health-check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/products/:productId",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "96d20ee9-ba2c-48bf-9498-7c527f5d5d46"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X GET http://localhost:8080/api/v1/products/1\n"
+					},
+					"response": []
+				},
+				{
+					"name": "All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/products",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"products"
+							]
+						},
+						"description": "Generated from cURL: curl -X GET http://localhost:8080/api/v1/products/1\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Products Bulk",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n           {\n             \"name\": \"iPhone\",\n             \"price\": 1299.99,\n             \"description\": \"Latest iPhone\"\n           },\n           {\n             \"name\": \"Sony soundbar\",\n             \"price\": 249.99,\n             \"description\": \"best soundbar\"\n           }\n         ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/products/bulk",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"products",
+								"bulk"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/api/v1/products/bulk \\\n     -H \"Content-Type: application/json\" \\\n     -d '[\n           {\n             \"name\": \"Smartphone\",\n             \"price\": 699.99,\n             \"stock\": 20,\n             \"description\": \"Latest model smartphone\"\n           },\n           {\n             \"name\": \"Headphones\",\n             \"price\": 149.99,\n             \"stock\": 50,\n             \"description\": \"Noise-cancelling headphones\"\n           }\n         ]'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"macbook air\",\n    \"price\": 1200.50,\n    \"description\": \"High-performance laptop\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/products",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"products"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/api/v1/products \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"name\": \"Laptop\",\n           \"price\": 1200.50,\n           \"stock\": 10,\n           \"description\": \"High-performance laptop\"\n         }'\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Orders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"productId\": \"96d20ee9-ba2c-48bf-9498-7c527f5d5d46\",\n            \"quantity\": 2\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/orders",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"orders"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST \"http://10.0.4.191:8099/oms/api/orders\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"productId\": 123,\n           \"quantity\": 2\n         }'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"status\": \"SHIPPED\"\n         }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/orders/:orderId/status",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"orders",
+								":orderId",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "d6d3bd22-6a3f-4aca-9002-b83150c08f3d"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PATCH \"http://10.0.4.191:8099/oms/api/orders/1/status\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"status\": \"SHIPPED\"\n         }'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/orders/:orderId",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "d6d3bd22-6a3f-4aca-9002-b83150c08f3d"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X GET \"http://10.0.4.191:8099/oms/api/orders/1\" \\\n     -H \"Content-Type: application/json\"\n"
+					},
+					"response": []
+				},
+				{
+					"name": "All Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/orders",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"orders"
+							]
+						},
+						"description": "Generated from cURL: curl -X GET \"http://10.0.4.191:8099/oms/api/orders\" \\\n     -H \"Content-Type: application/json\"\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inventory",
+			"item": [
+				{
+					"name": "Update Inventory",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stock\": 29\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/inventory/products/:productId",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"inventory",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "96d20ee9-ba2c-48bf-9498-7c527f5d5d46"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PATCH \"http://10.0.4.191:8099/oms/api/inventory/123\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"stock\": 100\n         }'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add stock",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/inventory/products/:productId?stock=9",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"inventory",
+								"products",
+								":productId"
+							],
+							"query": [
+								{
+									"key": "stock",
+									"value": "9"
+								}
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "96d20ee9-ba2c-48bf-9498-7c527f5d5d46"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PATCH \"http://10.0.4.191:8099/oms/api/inventory/123\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"stock\": 100\n         }'\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory by productID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{oms-be}}/oms/api/v1/inventory/products/:productId",
+							"host": [
+								"{{oms-be}}"
+							],
+							"path": [
+								"oms",
+								"api",
+								"v1",
+								"inventory",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "96d20ee9-ba2c-48bf-9498-7c527f5d5d46"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PATCH \"http://10.0.4.191:8099/oms/api/inventory/123\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\n           \"stock\": 100\n         }'\n"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -60,6 +60,12 @@ This is a scalable microservices-based Order Management System (OMS) for an e-co
    mvn spring-boot:run
    ```
 
+### Health Check
+To check if the service is running, use the following cURL command:
+```sh
+curl --location 'http://34.205.71.123:80/oms/api/health-check'
+```
+
 ## Future Enhancements
 - Implement pagination, filtering, and sorting for product and order retrieval.
 - Introduce caching mechanisms for frequently accessed data.
